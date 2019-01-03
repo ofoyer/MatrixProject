@@ -1,0 +1,22 @@
+#main-container {
+  margin-top: 200px;
+}
+
+h1, form {
+  text-align: center;
+  font-weight: normal;
+}
+
+mat-form-field {
+  width: 250px;
+}
+
+button {
+  display: block;
+  width: 150px;
+  margin: 10px 0px;
+  border-radius: 10px;
+  color: white;
+  border: 1px solid black;
+  margin-left: calc(50% - 75px);
+}

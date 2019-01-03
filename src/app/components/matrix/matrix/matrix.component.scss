@@ -1,0 +1,54 @@
+mat-grid-list {
+  display: inline-block;
+  padding-bottom: 100px !important;
+}
+
+mat-grid-tile {
+  background: lightblue;
+  border: 1px solid black;
+}
+
+.white {
+  background-color: white;
+}
+
+.black {
+  background-color: black;
+}
+
+#n, #m {
+  color: silver;
+  margin: 20px;
+}
+
+#n {
+  text-align: center;
+  margin-left: 75px;
+}
+
+#m {
+  margin-top: 300px;
+  width: 37px;
+  position: absolute;
+  left: 0;
+  display: inline-block;
+}
+
+button {
+  display: block;
+  width: 150px;
+  margin: 10px 0px;
+  border-radius: 10px;
+  color: white;
+  border: 1px solid black;
+  margin-left: calc(50% - 75px + 37px);
+}
+
+#matrix {
+  overflow: scroll;
+  margin-left: 60px;
+  padding-left: -30px;
+  margin-bottom: 60px;
+  max-height: 500px;
+  text-align: center;
+}

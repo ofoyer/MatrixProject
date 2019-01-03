@@ -1,0 +1,35 @@
+// styles for pick datetime
+@import '~@angular/material/theming';
+@include mat-core();
+
+$primary: mat-palette($mat-indigo,500);
+
+$accent: mat-palette($mat-blue,500);
+
+$warn: mat-palette($mat-red,700);
+
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);
+
+/* SCROLLBAR */
+
+/* width */
+::-webkit-scrollbar {
+  height: 2px;
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px transparent;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3f51b5;
+  border-radius: 2px;
+  width: 2px;
+  background-clip: content-box;
+}

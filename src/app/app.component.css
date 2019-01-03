@@ -1,0 +1,13 @@
+::ng-deep .success-dialog {
+  color: white;
+  background-color: #2196F4;
+}
+
+::ng-deep .error-dialog {
+  color: white;
+  background-color: #F44337;
+}
+
+::ng-deep .mat-simple-snackbar-action {
+  color: white;
+}

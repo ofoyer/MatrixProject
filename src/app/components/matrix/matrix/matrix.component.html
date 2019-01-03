@@ -1,0 +1,27 @@
+
+
+
+
+<h1 id="n">n</h1>
+
+<div id="matrix">
+  <h1 id="m">m</h1>
+  <mat-grid-list cols="{{n}}"
+                 rowHeight="20px"
+                 [ngStyle]="{ 'width':  matGridListWidth() }">
+    <mat-grid-tile *ngFor="let cell of cellsSingleArray()"
+                   matTooltip="{{cell.color}}"
+                   [ngStyle]="{ 'background-color': cell.color }"
+                   (click)="changeColor(cell)"></mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<button mat-flat-button
+        color="accent"
+        (click)="solve()"
+        *ngIf="!traversed[0][0]">SOLVE</button>
+
+<button mat-flat-button
+        color="accent"
+        (click)="toHomeScreen()"
+        *ngIf="traversed[0][0]">< RESTART</button>

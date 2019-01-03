@@ -1,0 +1,17 @@
+<div id="main-container">
+  <h1>Please enter bitmap size:</h1>
+
+  <form [formGroup]="formGroup" class="center">
+    <mat-form-field appearance="outline">
+      <input matInput
+             formControlName="dimensions"
+             placeholder="Bitmap size: n,m"
+             autocomplete="off"
+             autofocus>
+      <mat-error *ngIf="formGroup.get('dimensions').hasError('pattern')">n and m are numbers! Format is 'n,m'</mat-error>
+    </mat-form-field>
+  </form>
+
+  <button mat-flat-button color="accent" (click)="toMatrixScreen(false)">RANDOMIZE</button>
+  <button mat-flat-button color="accent" (click)="toMatrixScreen(true)">BONUS: DRAW</button>
+</div>
