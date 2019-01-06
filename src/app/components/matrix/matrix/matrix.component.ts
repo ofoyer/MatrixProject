@@ -2,6 +2,7 @@ import { MatSnackBar } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from "@angular/router"
+import { of } from 'rxjs';
 
 const BLACK_COLOR_IN_HEX = '#000000';
 const CELL_WIDTH         = 20;
@@ -40,23 +41,25 @@ export class MatrixComponent implements OnInit {
       this.m    = parseInt(params.m);
     });
 
-    this.cells = this.generateCells();
+    this.generateCells().subscribe(obseravleCells => this.cells = obseravleCells);
   }
 
   private generateCells() {
+    var results: Cell[][] = [];
+
     for (let i = 0; i < this.m; i++) {
-      this.cells[i]     = [];
+      results[i]     = [];
       this.traversed[i] = [];
 
       for (let j = 0; j < this.n; j++) {
         this.traversed[i].push(false);
-        this.cells[i][j] = {
-          color: this.draw ? WHITE : Math.random() >= 0.8 ? BLACK : WHITE
-        };
+        results[i][j] = {
+           color: this.draw ? WHITE : Math.random() >= 0.8 ? BLACK : WHITE
+         };
       }
     }
 
-    return this.cells;
+    return of(results);
   }
 
   private solve() {
@@ -73,6 +76,7 @@ export class MatrixComponent implements OnInit {
   }
 
   private dfs(m, n, color): void {
+    const start: any = new Date();
     if (n === null) return;
     if (this.traversed[m][n]) return;
 
@@ -89,6 +93,8 @@ export class MatrixComponent implements OnInit {
     if (this.inBoundsAndBlack(m + 1, n - 1)) this.dfs(m + 1, n - 1, color);
     if (this.inBoundsAndBlack(m + 1, n    )) this.dfs(m + 1, n    , color);
     if (this.inBoundsAndBlack(m + 1, n + 1)) this.dfs(m + 1, n + 1, color);
+    const end: any = new Date();
+    this.notifyOnDfsRunTime(end - start);
   }
 
   private isWhite(i, j): boolean {
@@ -137,5 +143,21 @@ export class MatrixComponent implements OnInit {
     }
 
     return color;
+  }
+
+  private indexArrayOfLength(n) {
+    const array = [];
+    let counter = 0;
+    while (counter < n) {
+      array.push(counter);
+      counter += 1;
+    }
+
+    return array;
+  }
+
+  private cellAt(j, i) {
+    console.log('counter')
+    return this.cells[i][j];
   }
 }
